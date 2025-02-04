@@ -12,10 +12,29 @@
 }
 @keyframes bounce {
     from {
-    transform: none;
+        transform: none;
     }
     to {
-    transform: translateY(25%);
+        transform: translateY(25%);
+    }
+}
+
+.c-boucing  {
+    animation-name: cboucing;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function:  ease-in-out;
+}
+
+@keyframes cboucing {
+    0% {
+        transform: rotate(0.5turn)
+    }
+    50% {
+        transform: rotate(0.4turn)
+    }
+    100% {
+        transform: rotate(0.5turn)
     }
 }
 

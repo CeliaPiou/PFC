@@ -1642,6 +1642,9 @@
   .p-70 {
     padding: calc(var(--spacing) * 70);
   }
+  .pt-5 {
+    padding-top: calc(var(--spacing) * 5);
+  }
   .text-center {
     text-align: center;
   }
@@ -1695,6 +1698,10 @@
   .text-5xl {
     font-size: var(--text-5xl);
     line-height: var(--tw-leading, var(--text-5xl--line-height));
+  }
+  .text-6xl {
+    font-size: var(--text-6xl);
+    line-height: var(--tw-leading, var(--text-6xl--line-height));
   }
   .leading-none {
     --tw-leading: 1;
