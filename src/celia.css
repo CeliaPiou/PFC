@@ -1,0 +1,41 @@
+/* * {
+    transition: all 0.7s ease-in-out;
+} */
+
+
+.bouncing {
+    animation-name: bounce;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function:  ease-in-out;
+
+}
+@keyframes bounce {
+    from {
+    transform: none;
+    }
+    to {
+    transform: translateY(25%);
+    }
+}
+
+#dead-zone {
+    margin-top: 50px;
+    height: 50vh;
+    width: 80vw;
+}
+
+.btn-like {
+    border-radius:  50px;
+    padding: 15px;
+    background: rgb(97,95,255);
+    background: linear-gradient(90deg, rgba(97,95,255,1) 0%, rgba(51,49,249,1) 100%);
+    cursor: pointer;
+    box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.418);
+
+}
+
+.btn-like:hover {
+    background: rgb(75,73,215);
+    background: linear-gradient(90deg, rgb(64, 62, 184) 0%, rgb(37, 34, 196) 100%);
+}
