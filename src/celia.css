@@ -28,13 +28,13 @@
 
 @keyframes cboucing {
     0% {
-        transform: rotate(0.5turn)
+        transform: rotate(0.45turn)
     }
     50% {
-        transform: rotate(0.4turn)
+        transform: rotate(0.55turn)
     }
     100% {
-        transform: rotate(0.5turn)
+        transform: rotate(0.45turn)
     }
 }
 
@@ -57,4 +57,44 @@
 .btn-like:hover {
     background: rgb(75,73,215);
     background: linear-gradient(90deg, rgb(64, 62, 184) 0%, rgb(37, 34, 196) 100%);
+}
+
+#and-the-winner-is {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    position: absolute;
+    font-weight: 700;
+    font-size: 2rem;
+    top: -100vh;
+    left: 10vw;
+    right: 10vw;
+    height: 60vh;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    border-radius: 30px;
+    transition: all 1s ease-in-out;
+
+    a {
+        text-decoration: underline;
+    }
+}
+
+
+.victoryBg {
+    background: rgb(84,199,18);
+    background: linear-gradient(90deg, rgba(84,199,18,1) 0%, rgba(2,126,7,1) 100%);
+}
+.loosingBg {
+    background: rgb(215,73,73);
+    background: linear-gradient(90deg, rgba(215,73,73,1) 0%, rgba(208,145,38,1) 100%)
+}
+
+.tieBg {
+    background: rgb(75,73,215);
+    background: linear-gradient(90deg, rgb(64, 62, 184) 0%, rgb(22, 20, 143) 100%)
 }
