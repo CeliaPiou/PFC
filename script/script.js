@@ -223,7 +223,7 @@ sentence.addEventListener('click', (event) => {
             // QUE FAIRE APRES SON MOOVE, QUI A GAGNE ?
             setTimeout(() => {
 
-                winnerIs.style.top = "5vh";
+                winnerIs.style.top = "100vh";
 
                 // HE WINS
                 if((hisChoice == "his-rock" && choice == "scissor")
@@ -288,21 +288,21 @@ sentence.addEventListener('click', (event) => {
 
 })
 
-yourCountainer.innerHTML = localStorage.getItem("my-hearts");
-hisCountainer.innerHTML = localStorage.getItem("his-hearts");
 
 // I LOOSE
 if (localStorage.getItem("my-hearts") == 0) {
 
     //AFFICHER LA LOOSANCE
-    winnerIs.style.top = "5vh";
+    winnerIs.style.top = "115vh";
 
     winnerIs.innerHTML =
     `
     <p>You loose, I'm very sorry... 🥲 Wanna try again?</p>
     <p><a href="#" class="btn-like">Nouvelle Partie ?</a></p>
     `
-    winnerIs.classList.add('loosingBg')
+    winnerIs.classList.add('loosingBg');
+
+
 
     // BOUTON RECOMMENCER
     let buttons = document.querySelectorAll('a');
@@ -314,8 +314,9 @@ if (localStorage.getItem("my-hearts") == 0) {
         });
 }
 
+// I WIN
 if (localStorage.getItem("his-hearts") == 0) {
-    winnerIs.style.top = "5vh";
+    winnerIs.style.top = "100vh";
     winnerIs.innerHTML =
     `
     <p>Congrats, you WON ! That was epic. Wanna try again?</p>
@@ -332,3 +333,6 @@ if (localStorage.getItem("his-hearts") == 0) {
             })
         });
 }
+
+yourCountainer.innerHTML = localStorage.getItem("my-hearts");
+hisCountainer.innerHTML = localStorage.getItem("his-hearts");
