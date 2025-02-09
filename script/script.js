@@ -24,7 +24,10 @@ let intervall = "";
 let actif = "bg-zinc-400";
 let inactif = "bg-zinc-600";
 
-// Pour les scores
+// Pour les scores;
+let yourCountainer = document.getElementById('your-lives');
+const hisCountainer = document.getElementById('his-lives');
+
 
 // _______________________________________________________________________________________________
 // _______________________________________________________________ //
@@ -36,19 +39,32 @@ function reload (a) {
     window.location.reload()
 }
 
-
 // _______________________________________________________________________________________________
 // _______________________________________________________________ //
 //                                                                 //
 //          LIVES SYSTEME                                          //
 // _______________________________________________________________ //
 
+// Si le localStorage est vide (au démarrage) = 3 vies chacun.
+if (localStorage.length == 0) {
 
+    let myHearts = 3;
+    let hisHearts = 3;
 
+    localStorage.setItem("my-hearts", myHearts);
+    localStorage.setItem("his-hearts", hisHearts);
 
+}
 
+// Fonction pour modifier le n° de vies.
+function modifierItem(key) {
 
+    let currentNb = localStorage.getItem(key);
+    let newNb = currentNb - 1;
+    localStorage.setItem(key, newNb);
+    yourCountainer.innerHTML = localStorage.getItem(key)
 
+}
 
 // _______________________________________________________________________________________________
 // _______________________________________________________________ //
@@ -181,6 +197,7 @@ sentence.addEventListener('click', (event) => {
                     `
                     <p id="${hisChoice}" class="text-5xl c-boucing transition duration-150 ease-in-out rounded-full p-5">✋</p>
                     `
+
                 }
                 else if (randomNumber === 1) {
 
@@ -203,8 +220,7 @@ sentence.addEventListener('click', (event) => {
 
             }, 3000);
 
-            // QUE FAIRE APRES SON MOOVE
-
+            // QUE FAIRE APRES SON MOOVE, QUI A GAGNE ?
             setTimeout(() => {
 
                 winnerIs.style.top = "5vh";
@@ -222,6 +238,10 @@ sentence.addEventListener('click', (event) => {
                     <p><a href="#" class="btn-like">Next Round</a></p>
                     `;
                     winnerIs.classList.add('loosingBg')
+
+                    modifierItem("my-hearts")
+
+
                 }
 
                 // YOU WON
@@ -238,6 +258,8 @@ sentence.addEventListener('click', (event) => {
                     <p><a href="#" class="btn-like">Next Round</a></p>
                     `;
                     winnerIs.classList.add('victoryBg');
+                    modifierItem("his-hearts");
+
                 }
 
                 else {
@@ -247,6 +269,7 @@ sentence.addEventListener('click', (event) => {
                     <p><a href="#" class="btn-like">Next Round</a></p>
                     `
                     winnerIs.classList.add('tieBg');
+
                 }
 
                 let buttons = document.querySelectorAll('a');
@@ -264,3 +287,48 @@ sentence.addEventListener('click', (event) => {
 
 
 })
+
+yourCountainer.innerHTML = localStorage.getItem("my-hearts");
+hisCountainer.innerHTML = localStorage.getItem("his-hearts");
+
+// I LOOSE
+if (localStorage.getItem("my-hearts") == 0) {
+
+    //AFFICHER LA LOOSANCE
+    winnerIs.style.top = "5vh";
+
+    winnerIs.innerHTML =
+    `
+    <p>You loose, I'm very sorry... 🥲 Wanna try again?</p>
+    <p><a href="#" class="btn-like">Nouvelle Partie ?</a></p>
+    `
+    winnerIs.classList.add('loosingBg')
+
+    // BOUTON RECOMMENCER
+    let buttons = document.querySelectorAll('a');
+        buttons.forEach(a => {
+            a.addEventListener('click', () => {
+            localStorage.clear()
+            reload();
+            })
+        });
+}
+
+if (localStorage.getItem("his-hearts") == 0) {
+    winnerIs.style.top = "5vh";
+    winnerIs.innerHTML =
+    `
+    <p>Congrats, you WON ! That was epic. Wanna try again?</p>
+    <p><a href="#" class="btn-like">Nouvelle Partie ?</a></p>
+    `
+    winnerIs.classList.add('victoryBg')
+
+    // BOUTON RECOMMENCER
+    let buttons = document.querySelectorAll('a');
+        buttons.forEach(a => {
+            a.addEventListener('click', () => {
+            localStorage.clear()
+            reload();
+            })
+        });
+}
